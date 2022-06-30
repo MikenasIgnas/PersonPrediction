@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(235, 217, 159);
+  background-color: rgb(180, 180, 180);
 }
 #mainContainer {
   margin-top: 150px;
@@ -32,7 +32,7 @@ body {
 }
 .informationContainer {
   display: flex;
-  background-color: rgb(172, 140, 140);
+  background-color: rgb(101, 106, 172);
   font-size: 17px;
   border-radius: 5px;
   color: white;
