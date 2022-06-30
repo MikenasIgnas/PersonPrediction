@@ -1,7 +1,9 @@
 const form = document.getElementById("form");
 const nameInput = document.getElementById("nameInput");
 const submit = document.getElementById("submit");
-
+const mainContainer = document.getElementById("mainContainer");
+const informationContainer = document.createElement("informationContainer");
+informationContainer.classList.add("informationContainer");
 const nameContainer = document.createElement("div");
 const genderContainer = document.createElement("div");
 const agePredictionContainer = document.createElement("div");
@@ -29,7 +31,8 @@ form.addEventListener("submit", (e) => {
             });
         });
     });
-  form.append(
+  mainContainer.append(informationContainer);
+  informationContainer.append(
     nameContainer,
     genderContainer,
     agePredictionContainer,
