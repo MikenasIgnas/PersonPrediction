@@ -28,7 +28,8 @@ form.addEventListener("submit", (e) => {
             .then((data) => {
               if (nameProbability > 0) {
                 nameContainer.textContent = "Name: " + nameInput.value;
-                genderContainer.textContent = "Gender: " + gender;
+                genderContainer.textContent =
+                  "Gender: " + gender.charAt(0).toUpperCase() + gender.slice(1);
                 agePredictionContainer.textContent = "Predicted age: " + age;
                 countryContainer.textContent =
                   "Predicted country: " + data.country[0].country_id;
