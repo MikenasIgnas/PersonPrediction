@@ -10,6 +10,7 @@ const agePredictionContainer = document.createElement("div");
 const countryContainer = document.createElement("div");
 const loading = document.createElement("p");
 const invalidName = document.createElement("p");
+const genderProbability = document.createElement("div");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   loading.textContent = "Loading...";
@@ -18,7 +19,7 @@ form.addEventListener("submit", (e) => {
     .then((res) => res.json())
     .then((data) => {
       const name = nameInput.value;
-      const nameProbability = data.probability;
+      const probability = data.probability;
       const gender = data.gender;
       fetch(`https://api.agify.io?name=${nameInput.value}`)
         .then((res) => res.json())
@@ -27,23 +28,25 @@ form.addEventListener("submit", (e) => {
           fetch(`https://api.nationalize.io?name=${nameInput.value}`)
             .then((res) => res.json())
             .then((data) => {
-              if (nameProbability > 0) {
+              if (probability > 0) {
                 nameContainer.textContent =
                   "Name: " +
                   name.charAt(0).toUpperCase() +
                   name.slice(1).toLowerCase();
+                genderProbability.textContent =
+                  "Gender Probability: " + probability * 100 + "%";
                 genderContainer.textContent =
                   "Gender: " + gender.charAt(0).toUpperCase() + gender.slice(1);
-                agePredictionContainer.textContent = "Predicted age: " + age;
+                agePredictionContainer.textContent = "Predicted Age: " + age;
                 countryContainer.textContent =
-                  "Predicted country: " + data.country[0].country_id;
+                  "Predicted Country: " + data.country[0].country_id;
                 invalidName.textContent = "";
               } else {
                 nameContainer.textContent = "";
                 genderContainer.textContent = "";
                 agePredictionContainer.textContent = "";
                 countryContainer.textContent = "";
-                invalidName.textContent = "Invalid name!";
+                invalidName.textContent = "Invalid Name!";
                 invalidName.style.margin = "auto";
               }
             });
@@ -54,6 +57,7 @@ form.addEventListener("submit", (e) => {
   informationContainer.append(
     nameContainer,
     genderContainer,
+    genderProbability,
     agePredictionContainer,
     countryContainer,
     loading,
