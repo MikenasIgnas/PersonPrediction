@@ -17,6 +17,7 @@ form.addEventListener("submit", (e) => {
   fetch(`https://api.genderize.io?name=${nameInput.value}`)
     .then((res) => res.json())
     .then((data) => {
+      const name = nameInput.value;
       const nameProbability = data.probability;
       const gender = data.gender;
       fetch(`https://api.agify.io?name=${nameInput.value}`)
@@ -27,7 +28,10 @@ form.addEventListener("submit", (e) => {
             .then((res) => res.json())
             .then((data) => {
               if (nameProbability > 0) {
-                nameContainer.textContent = "Name: " + nameInput.value;
+                nameContainer.textContent =
+                  "Name: " +
+                  name.charAt(0).toUpperCase() +
+                  name.slice(1).toLowerCase();
                 genderContainer.textContent =
                   "Gender: " + gender.charAt(0).toUpperCase() + gender.slice(1);
                 agePredictionContainer.textContent = "Predicted age: " + age;
