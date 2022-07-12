@@ -11,6 +11,7 @@ const countryContainer = document.createElement("div");
 const loading = document.createElement("p");
 const invalidName = document.createElement("p");
 const genderProbability = document.createElement("div");
+//pppppppp
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   loading.textContent = "Loading...";
